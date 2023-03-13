@@ -6,6 +6,7 @@ const migrationsverketBaseUrl =
 const migrationsverketStockholm = `${migrationsverketBaseUrl}&bokningstyp=2&enhet=Z209&sokande=1`;
 const migrationsverketUppsala = `${migrationsverketBaseUrl}&bokningstyp=2&enhet=MUP1&sokande=1`;
 const migrationsverketÖrebro = `${migrationsverketBaseUrl}&bokningstyp=2&enhet=MAOM&sokande=1`;
+const migrationsverketVästerås = `${migrationsverketBaseUrl}&bokningstyp=2&enhet=BBVS&sokande=2`;
 
 const mvAppointmentRequest = async (
   url: string,
@@ -27,7 +28,8 @@ const mvAppointmentRequest = async (
 export const checkForFreeSlots = async (time: number, beepTimes: number) => {
   await mvAppointmentRequest(migrationsverketStockholm, "Stockholm", beepTimes);
   await mvAppointmentRequest(migrationsverketUppsala, "Uppsala", beepTimes);
-  await mvAppointmentRequest(migrationsverketÖrebro, "Örebro", beepTimes);
+  // await mvAppointmentRequest(migrationsverketÖrebro, "Örebro", beepTimes);
+  await mvAppointmentRequest(migrationsverketVästerås, "Västerås", beepTimes);
 
   setTimeout(() => checkForFreeSlots(time, beepTimes), time);
 };
